@@ -1,0 +1,125 @@
+@Web_HostAddress = http://localhost:5029
+@MerchantId = {{createMerchant.response.body.$.id}}
+@CatalogId = {{createCatalog.response.body.$.id}}
+@CatalogItemId = {{createCatalogItem.response.body.$.id}}
+
+### Merchants
+
+# @name createMerchant
+POST {{Web_HostAddress}}/merchants
+Content-Type: application/json
+
+{
+  "name": "Test Merchant",
+  "isActive": true
+}
+
+###
+
+GET {{Web_HostAddress}}/merchants
+Accept: application/json
+
+###
+
+GET {{Web_HostAddress}}/merchants/{{MerchantId}}
+Accept: application/json
+
+###
+
+PUT {{Web_HostAddress}}/merchants/{{MerchantId}}
+Content-Type: application/json
+
+{
+  "name": "Updated Merchant",
+  "isActive": true
+}
+
+###
+
+POST {{Web_HostAddress}}/merchants/{{MerchantId}}/deactivate
+
+###
+
+POST {{Web_HostAddress}}/merchants/{{MerchantId}}/activate
+
+### Catalogs
+
+# @name createCatalog
+POST {{Web_HostAddress}}/merchants/{{MerchantId}}/catalogs
+Content-Type: application/json
+
+{
+  "name": "Test Catalog",
+  "isActive": true
+}
+
+###
+
+GET {{Web_HostAddress}}/merchants/{{MerchantId}}/catalogs
+Accept: application/json
+
+###
+
+GET {{Web_HostAddress}}/merchants/{{MerchantId}}/catalogs/{{CatalogId}}
+Accept: application/json
+
+###
+
+PUT {{Web_HostAddress}}/merchants/{{MerchantId}}/catalogs/{{CatalogId}}
+Content-Type: application/json
+
+{
+  "name": "Updated Catalog",
+  "isActive": true
+}
+
+###
+
+POST {{Web_HostAddress}}/merchants/{{MerchantId}}/catalogs/{{CatalogId}}/deactivate
+
+###
+
+POST {{Web_HostAddress}}/merchants/{{MerchantId}}/catalogs/{{CatalogId}}/activate
+
+### Catalog items
+
+# @name createCatalogItem
+POST {{Web_HostAddress}}/catalogs/{{CatalogId}}/items
+Content-Type: application/json
+
+{
+  "name": "Test Item",
+  "price": 99.95,
+  "isActive": true
+}
+
+###
+
+GET {{Web_HostAddress}}/catalogs/{{CatalogId}}/items
+Accept: application/json
+
+###
+
+GET {{Web_HostAddress}}/catalogs/{{CatalogId}}/items/{{CatalogItemId}}
+Accept: application/json
+
+###
+
+PUT {{Web_HostAddress}}/catalogs/{{CatalogId}}/items/{{CatalogItemId}}
+Content-Type: application/json
+
+{
+  "name": "Updated Item",
+  "price": 149.50,
+  "isActive": true
+}
+
+###
+
+POST {{Web_HostAddress}}/catalogs/{{CatalogId}}/items/{{CatalogItemId}}/deactivate
+
+###
+
+POST {{Web_HostAddress}}/catalogs/{{CatalogId}}/items/{{CatalogItemId}}/activate
+
+###

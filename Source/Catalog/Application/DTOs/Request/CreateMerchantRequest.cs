@@ -1,0 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace Application.DTOs.Request
+{
+    public record CreateMerchantRequest(Guid Id, [Required] string Name, bool IsActive);
+}
